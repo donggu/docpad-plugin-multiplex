@@ -1,0 +1,36 @@
+{
+    "name": "docpad-plugin-multiplex",
+    "version": "2.0.1",
+    "description": "DocPad plugin that adds the extra syntax",
+    "homepage": "https://github.com/donggu/docpad-plugin-multiplex",
+    "keywords": [
+        "multiplex",
+        "docpad",
+        "docpad-plugin",
+        "docpad-plugin-multiplex"
+    ],
+    "author": "github.com/donggu",
+    "maintainers": [
+        "http://github.com/donggu"
+    ],
+    "contributors": [
+        "http://github.com/donggu"
+    ],
+    "bugs": {
+        "url": "https://github.com/donggu/docpad-plugin-multiplex/issues"
+    },
+    "repository" : {
+        "type": "git",
+        "url": "https://github.com/donggu/docpad-plugin-multiplex.git"
+    },
+    "engines" : {
+        "node": ">=0.8"
+    },
+    "peerDependencies": {
+        "docpad": "6"
+    },
+    "dependencies": {
+        "coffee-script":"1.7.1"
+    },
+    "main": "./src/multiplex.plugin.coffee"
+}
