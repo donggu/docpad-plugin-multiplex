@@ -1,26 +1,26 @@
+_ = require('underscore')
 # Export Plugin
 module.exports = (BasePlugin) ->
     # Define Plugin
     class MultiplexPlugin extends BasePlugin
         # Plugin name
-        name: 'Multiplex'
-        #populateCollectionsBefore: ()->
+        name: 'multiplex'
+        #populateCollectionsBefore: (opts, next)->
         populateCollections: (opts,next) ->
-            console.log("length ===== ")
-            console.log(@getCollection("documents").length)
-            # db = @docpad.getDatabase()
-            # db.forEach(document) ->
-            #     newDoc = docpad.cloneModel(document)
-            #     newDoc
-            #     db.add(newDoc)
-            #     opts.collection?.add(newDoc)
+            c = @docpad.getCollection("documents")
+            db = @docpad.getDatabase()
+            extra = []
 
-        #conextualizeBefore: ()->
+            c.forEach (document) ->
+                extensions = document.get('relativePath').replace(/^.*[\\\/]/, '').split('.').slice(1)
 
+                if _.isEqual(extensions,["md"])
+                    newDoc = docpad.cloneModel(document)
+                    extra.push(newDoc)
+                    newDoc.setMeta(
+                        outExtension: 'html'
+                        extensions: ['html', 'md']
+                    )
 
-# JSON.parse(JSON.stringify(obj)) to
-
-
-
-
-# docpad.createDocument(documentAttributes)
+            db.add(extra)
+            next()
